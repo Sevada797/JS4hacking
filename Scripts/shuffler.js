@@ -13,9 +13,9 @@ let fileContent;
 
 function Shuffler(array, prefix = '', suffix = '', stringToJoin = '') {
     if (array === undefined) {
-        console.error('%cError: First parameter must be defined', 'color: yellow; font-weight: bold;');
+        return console.error('%cError: First parameter must be defined', 'color: yellow; font-weight: bold;');
     } else if (!Array.isArray(array)) {
-        console.error('%cError: First parameter must be an Array', 'color: yellow; font-weight: bold;');
+        return console.error('%cError: First parameter must be an Array', 'color: yellow; font-weight: bold;');
     }
     fileContent = '';
     let l = array.length;
