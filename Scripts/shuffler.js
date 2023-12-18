@@ -1,3 +1,14 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////  For some reason you can't call Shuffler continously, so                                                            /////
+////  you might need to reload page import script and than again run Shuffler().                                         /////
+////  This could be from eighter chrome blocking multi-download, eighter I have some iteration problem in the script     /////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Examples to run - Shuffler( ['t', 'e', 'x', 't'] )
+// also you can run with additional prefix suffix and stringToJoin for ex. Shuffler( [555, '@'], '[', ']', ',')   -  This will make an array format.
+// I think this is a useful script for some fuzzing
+
+
 let fileContent;
 
 function Shuffler(array, prefix = '', suffix = '', stringToJoin = '') {
