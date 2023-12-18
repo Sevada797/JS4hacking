@@ -14,7 +14,6 @@
 //
 // /* Or you can have your function maybe for making a fetch requests continously or something custom? */ 
 // easyLoopLimiter( 0, 1000, 300, 'yourCustomFunction()')
-//  NOTE:  Please also note that in your custom function you can use variable `i` as it will be accessible
 //
 
 
