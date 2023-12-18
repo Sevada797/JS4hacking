@@ -2,8 +2,9 @@
 //////    NOTE    ///////
 /////////////////////////
 // Any of these two functions can be used, but there is a small difference between them tho
-// When using first one, let's say you do alert() each time, whenever you close the alert than the timer will continue,
-// meanwhile the second script won't care, so if you press alert late intentanoally you will see next alert poping up at light speed
+// When using first one, let's say you do alert() each time, whenever you close the alert then only the timer will continue,
+// meanwhile the second script won't care, so if you press alert late intentanoally you will see next alert poping up at light speed,
+// so I think in scripts that require user interaction you can use the first one
 // but tbh I don't know in what any other situations this could cause trouble or advantage over one another, so I will just keep both
 //
 /////////////////////////
