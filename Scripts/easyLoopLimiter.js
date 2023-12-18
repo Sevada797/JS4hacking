@@ -15,7 +15,10 @@
 // /* Or you can have your function maybe for making a fetch requests continously or something custom? */ 
 // easyLoopLimiter( 0, 1000, 300, 'yourCustomFunction()')
 //
-
+// /* You can pass increasing parameter i to your custom function like this */
+// easyLoopLimiter( 0, 5, 100, 'custom(i)' );  function custom(n) { alert(n) }
+//
+//
 
 function easyLoopLimiter(loopStrtNum, loopEndNum, timeToPause, yourFunction) {
 
