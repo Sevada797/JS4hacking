@@ -1,1 +1,1 @@
-let a=prompt(); documet.body.innerHTML=a
+let a=prompt(); document.body.innerHTML=a
