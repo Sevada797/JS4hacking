@@ -4,7 +4,7 @@
 const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
 
 // Get the text content of the document
-const documentText = document.body.innerText;
+const documentText = document.body.innerHTML;
 
 // Use the regular expression to find all email addresses in the document
 const emails = documentText.match(emailRegex);
