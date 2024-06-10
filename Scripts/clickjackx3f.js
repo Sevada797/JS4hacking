@@ -25,13 +25,13 @@ function easyLoopLimiter(loopStrtNum, loopEndNum, timeToPause, yourFunction) {
     function loadUrl(i) {
         if (i < urls.length) {
             iframe.src = urls[i];
-             try { if (typeof(document.getElementById('a').contentWindow) =='object' ) {
+             try { if (typeof(iframe.contentWindow) =='object' ) {
 
               
                 bypassed.push(urls[i]);
                 console.log(`URL bypassed: ${urls[i]}`);
              }
-                 }
+                 } catch{}
 
         }
     }
@@ -46,6 +46,5 @@ https://chatgpt.com/backend-api/me
 // Convert input list to an array of URLs
 const urls = inputList.split('\n');
     // Start the loop using easyLoopLimiter
-    easyLoopLimiter(0, urls.length, 200, 'loadUrl(i)');
-
+    easyLoopLimiter(0, urls.length, 2000, 'loadUrl(i)');
 
