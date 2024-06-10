@@ -25,10 +25,14 @@ function easyLoopLimiter(loopStrtNum, loopEndNum, timeToPause, yourFunction) {
     function loadUrl(i) {
         if (i < urls.length) {
             iframe.src = urls[i];
-            iframe.onload = function() {
+             try { if (typeof(document.getElementById('a').contentWindow) =='object' ) {
+
+              
                 bypassed.push(urls[i]);
                 console.log(`URL bypassed: ${urls[i]}`);
-            };
+             }
+                 }
+
         }
     }
 
