@@ -1,3 +1,9 @@
+# Update
+I am adding all functions in one file so you can just copy and paste it in TamperMonkey extension, 
+and easily use them from now on, copy paste once - use forever
+
+
+
 # JS4hacking
 Set of scripts that will be useful for bug hunters
 
