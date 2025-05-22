@@ -1,3 +1,4 @@
+![J4](https://github.com/Sevada797/JS4hacking/blob/main/assets/logo.png?raw=true)
 # 🔥 JS4Hacking Extension — Now as a Chrome Addon!
 
 I'm turning this **wonderful set of tools** into a **full Chrome Extension** — now it’s even easier to use.  
