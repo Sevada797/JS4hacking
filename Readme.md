@@ -28,7 +28,7 @@ Previously, you had to inject it manually or use TamperMonkey — now it lives i
 1. Go to `chrome://extensions/`
 2. Enable **Developer Mode** (top right)
 3. Click **"Load Unpacked"**
-4. Select your folder (e.g., `~/t00ls/JS4hacking/`)
+4. Select your folder (e.g., `~/JS4hacking/`)
 5. Boom! Now hit any target site, open DevTools(console), and use the extension!
 
 ---
