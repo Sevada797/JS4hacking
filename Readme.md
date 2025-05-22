@@ -33,9 +33,7 @@ Previously, you had to inject it manually or use TamperMonkey — now it lives i
 ---
 
 ## 🧩 Using the Extension
-- Click the extension icon in Chrome toolbar
-- Toggle ON/OFF for tool usage
-- Click buttons (e.g., `Links`, `Mails`) to inject respective scripts
+- After importing all functions are auto injected in page
 - You can always write your own in `Scripts/` and hook them in
 
 ---
@@ -45,3 +43,8 @@ Previously, you had to inject it manually or use TamperMonkey — now it lives i
 ....
 
 Cool updates upcoming !! Stay tuned :D
+(
+1) add menu() function for listing all other functions
+2) add other cool tools :D (SPOILER: reflection checker for cookies and storage items
+in html, auto-bruter script etc..)
+)
