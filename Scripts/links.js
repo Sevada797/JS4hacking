@@ -1,3 +1,4 @@
+window.links=function () {
 // Define a regular expression to match URLs
 const urlRegex = /\bhttps?:\/\/[^\s/$.?#].[^\s]*\b/g;
 
@@ -8,4 +9,6 @@ const documentText = document.body.innerHTML;
 const urls = documentText.match(urlRegex);
 
 // Log the extracted URLs to the console
-console.log(urls);
+return urls;
+
+}

@@ -1,3 +1,5 @@
+window.rmreq=function () {
+
 // Select all elements with the 'required' attribute
 const requiredElements = document.querySelectorAll('[required]');
 
@@ -7,3 +9,4 @@ requiredElements.forEach(element => {
 });
 
 console.log('All required attributes have been removed.');
+}

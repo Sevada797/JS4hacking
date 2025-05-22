@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////  For some reason you can't call Shuffler continously, so                                                            /////
+////  For some rzeason you can't call Shuffler continously, so                                                            /////
 ////  you might need to reload page import script and than again run Shuffler().                                         /////
 ////  This could be from eighter chrome blocking multi-download, eighter I have some iteration problem in the script     /////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -9,9 +9,8 @@
 // I think this is a useful script for some fuzzing
 
 
-let fileContent;
-
-function Shuffler(array, prefix = '', suffix = '', stringToJoin = '') {
+window.Shuffler=function (array, prefix = '', suffix = '', stringToJoin = '') {
+    let fileContent;
     if (array === undefined) {
         return console.error('%cError: First parameter must be defined', 'color: yellow; font-weight: bold;');
     } else if (!Array.isArray(array)) {
@@ -25,16 +24,16 @@ function Shuffler(array, prefix = '', suffix = '', stringToJoin = '') {
         swap(array, ml - k, ml - k - 1);
         fileContent += prefix + array.join(stringToJoin) + suffix + "\n"
     }
-    createAndDownloadFile()
+    createAndDownloadFile(fileContent)
 
 }
 
 
-function swap(myArray, x, y) {
+window.swap=function (myArray, x, y) {
     [myArray[x], myArray[y]] = [myArray[y], myArray[x]];
 }
 
-function factorial(n) {
+window.factorial=function (n) {
     if (n < 0) {
         return "number has to be positive."
     }
@@ -45,7 +44,7 @@ function factorial(n) {
     }
 }
 
-function createAndDownloadFile() {
+window.createAndDownloadFile=function (fileContent) {
     alert();
     const blob = new Blob([fileContent], {
         type: 'text/plain'

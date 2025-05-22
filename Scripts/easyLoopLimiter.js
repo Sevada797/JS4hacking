@@ -21,7 +21,7 @@
 //
 //
 
-function easyLoopLimiter(loopStrtNum, loopEndNum, timeToPause, yourFunction) {
+window.easyLoopLimiter=function (loopStrtNum, loopEndNum, timeToPause, yourFunction) {
 
     function loop(i) {
         if (i < loopEndNum) {
@@ -43,7 +43,7 @@ function easyLoopLimiter(loopStrtNum, loopEndNum, timeToPause, yourFunction) {
 }
 
 
-function easyLoopLimiter2(loopStrtNum, loopEndNum, timeToPause, yourFunction) {
+window.easyLoopLimiter2=function (loopStrtNum, loopEndNum, timeToPause, yourFunction) {
 
     let i = loopStrtNum;
     let a = setInterval(() => {
