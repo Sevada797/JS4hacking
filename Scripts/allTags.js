@@ -12,7 +12,7 @@ u can put alll these  inn function all  after  calling all()    tags object shou
 */
 
 
-window.collectTags=function (document) {
+function collectTags(document) {
     const tags = {
         'a': [],
         'iframe': [],
@@ -38,7 +38,7 @@ window.collectTags=function (document) {
 }
 
 // Function to validate form action URL
-window.validateFormAction=function (action) {
+function validateFormAction(action) {
     const regex = /^http(s)?:\/\//;
     if (!regex.test(action)) {
         const baseUrl = window.location.href.endsWith('/') ? window.location.href : window.location.href + '/';
@@ -50,7 +50,7 @@ window.validateFormAction=function (action) {
 }
 
 // Function to collect inputs within form
-window.collectFormInputs=function (formElement) {
+function collectFormInputs(formElement) {
     const inputs = [];
     formElement.querySelectorAll('input').forEach(input => {
         if (input.type === 'hidden') {

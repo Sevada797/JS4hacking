@@ -1,4 +1,4 @@
-window.rmreq=function () {
+function rmreq() {
 
 // Select all elements with the 'required' attribute
 const requiredElements = document.querySelectorAll('[required]');

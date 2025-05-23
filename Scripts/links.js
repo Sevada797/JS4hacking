@@ -1,4 +1,4 @@
-window.links=function () {
+function links() {
 // Define a regular expression to match URLs
 const urlRegex = /\bhttps?:\/\/[^\s/$.?#].[^\s]*\b/g;
 

@@ -12,7 +12,7 @@ u can put alll these  inn function all  after  calling all()    tags object shou
 */
 
 
-window.collectTags=function (document) {
+function collectTags(document) {
     const tags = {
         'a': [],
         'iframe': [],
@@ -38,7 +38,7 @@ window.collectTags=function (document) {
 }
 
 // Function to validate form action URL
-window.validateFormAction=function (action) {
+function validateFormAction(action) {
     const regex = /^http(s)?:\/\//;
     if (!regex.test(action)) {
         const baseUrl = window.location.href.endsWith('/') ? window.location.href : window.location.href + '/';
@@ -50,7 +50,7 @@ window.validateFormAction=function (action) {
 }
 
 // Function to collect inputs within form
-window.collectFormInputs=function (formElement) {
+function collectFormInputs(formElement) {
     const inputs = [];
     formElement.querySelectorAll('input').forEach(input => {
         if (input.type === 'hidden') {
@@ -68,7 +68,29 @@ window.collectFormInputs=function (formElement) {
 //const tags = collectTags(document);
 //console.log(tags);
 
-/////////////////////////
+function brute() {
+    return "";
+}async function corscheck() {
+    const input = prompt("Enter domains (newline separated):");
+    if (!input) return;
+  
+    const domains = input.split('\n').map(d => d.trim()).filter(Boolean);
+    const successful = [];
+  
+    for (const domain of domains) {
+      const url = `https://${domain}/`;
+  
+      try {
+        const res = await fetch(url, { mode: 'cors' });
+        console.log(`✅ Fetched: ${url}`);
+        successful.push(domain);
+      } catch (e) {
+        console.log(`❌ Failed: ${url}`);
+      }
+    }
+  
+    console.log(`\n🎯 Accessible subs:\n`, successful.join('\n'));
+  }/////////////////////////
 //////    NOTE    ///////
 /////////////////////////
 // Any of these two functions can be used, but there is a small difference between them tho
@@ -91,7 +113,7 @@ window.collectFormInputs=function (formElement) {
 //
 //
 
-window.easyLoopLimiter=function (loopStrtNum, loopEndNum, timeToPause, yourFunction) {
+function easyLoopLimiter(loopStrtNum, loopEndNum, timeToPause, yourFunction) {
 
     function loop(i) {
         if (i < loopEndNum) {
@@ -113,7 +135,7 @@ window.easyLoopLimiter=function (loopStrtNum, loopEndNum, timeToPause, yourFunct
 }
 
 
-window.easyLoopLimiter2=function (loopStrtNum, loopEndNum, timeToPause, yourFunction) {
+function easyLoopLimiter2(loopStrtNum, loopEndNum, timeToPause, yourFunction) {
 
     let i = loopStrtNum;
     let a = setInterval(() => {
@@ -125,11 +147,11 @@ window.easyLoopLimiter2=function (loopStrtNum, loopEndNum, timeToPause, yourFunc
     }, timeToPause)
 
 }
-window.showhtml=function () {
+function showhtml() {
 // dumb function but I love it, make sure you are in data:, or in safe domain just in case
 let a=prompt(); document.body.innerHTML=a;
 }
-window.links=function () {
+function links() {
 // Define a regular expression to match URLs
 const urlRegex = /\bhttps?:\/\/[^\s/$.?#].[^\s]*\b/g;
 
@@ -143,7 +165,7 @@ const urls = documentText.match(urlRegex);
 return urls;
 
 }
-window.mails=function () {
+function mails() {
 // Assuming you want to extract email addresses from a document using JavaScript
 
 // Define a regular expression to match email addresses
@@ -160,7 +182,42 @@ return emails;
 
 }
 
-window.rmreq=function () {
+function menu() {
+    const reset = "\x1b[0m";
+    const bold = "\x1b[1m";
+    const cyan = "\x1b[36m";
+    const yellow = "\x1b[33m";
+    const magenta = "\x1b[35m";
+    const green = "\x1b[32m";
+  
+    console.log(`
+  ${bold}${cyan}=== Useful Functions Menu ===${reset}
+  
+  ${yellow}1) corscheck()${reset}
+     ${magenta}- Mass fetch in CORS mode across [sub]domains
+     - Check for accessible targets (useful for POST XSS CSRF)
+  
+  ${yellow}2) easyLoopLimiter()${reset}
+     ${magenta}- Helps prevent CPU burnouts in heavy loops
+  
+  ${yellow}3) links()${reset}
+     ${magenta}- Collects links from current page
+     - Logs as array
+  
+  ${yellow}4) mails()${reset}
+     ${magenta}- Extracts emails from current page
+     - Logs as array
+  
+  ${yellow}5) toki()${reset}
+     ${magenta}- Decodes Base64 tokens
+     - Auto URL-decodes and replaces safe chars
+  
+  ${yellow}6) brute()${reset}
+     ${magenta}- Auto-detects login inputs (user/pass)
+     - Launches bruteforce attempt (for legal testing only)
+  `);
+  }
+  function rmreq() {
 
 // Select all elements with the 'required' attribute
 const requiredElements = document.querySelectorAll('[required]');
@@ -172,7 +229,7 @@ requiredElements.forEach(element => {
 
 console.log('All required attributes have been removed.');
 }
-window.rall=function () {
+function rall() {
 let a=prompt("Text: "),b=prompt("Replace what?: "),c=prompt("Replace with?: "); document.body.innerText=a.replaceAll(b,c)
 }
 
@@ -187,7 +244,7 @@ let a=prompt("Text: "),b=prompt("Replace what?: "),c=prompt("Replace with?: "); 
 // I think this is a useful script for some fuzzing
 
 
-window.Shuffler=function (array, prefix = '', suffix = '', stringToJoin = '') {
+function Shuffler(array, prefix = '', suffix = '', stringToJoin = '') {
     let fileContent;
     if (array === undefined) {
         return console.error('%cError: First parameter must be defined', 'color: yellow; font-weight: bold;');
@@ -211,7 +268,7 @@ window.swap=function (myArray, x, y) {
     [myArray[x], myArray[y]] = [myArray[y], myArray[x]];
 }
 
-window.factorial=function (n) {
+function factorial(n) {
     if (n < 0) {
         return "number has to be positive."
     }
@@ -222,7 +279,7 @@ window.factorial=function (n) {
     }
 }
 
-window.createAndDownloadFile=function (fileContent) {
+function createAndDownloadFile(fileContent) {
     alert();
     const blob = new Blob([fileContent], {
         type: 'text/plain'
@@ -235,8 +292,8 @@ window.createAndDownloadFile=function (fileContent) {
     document.body.removeChild(a);
     a.href = '';
 }
-window.toki=function (a) {console.log(atob(decodeURIComponent(a).replaceAll('_','/').replaceAll('-','+')))}
-window.unhideinp=function () {
+function toki(a) {console.log(atob(decodeURIComponent(a).replaceAll('_','/').replaceAll('-','+')))}
+function unhideinp() {
 document.querySelectorAll('input[type="hidden"]').forEach(input => {
     input.type = 'text';
 });

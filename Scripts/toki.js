@@ -1,1 +1,1 @@
-window.toki=function (a) {console.log(atob(decodeURIComponent(a).replaceAll('_','/').replaceAll('-','+')))}
+function toki(a) {console.log(atob(decodeURIComponent(a).replaceAll('_','/').replaceAll('-','+')))}

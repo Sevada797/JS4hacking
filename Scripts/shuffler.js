@@ -9,7 +9,7 @@
 // I think this is a useful script for some fuzzing
 
 
-window.Shuffler=function (array, prefix = '', suffix = '', stringToJoin = '') {
+function Shuffler(array, prefix = '', suffix = '', stringToJoin = '') {
     let fileContent;
     if (array === undefined) {
         return console.error('%cError: First parameter must be defined', 'color: yellow; font-weight: bold;');
@@ -33,7 +33,7 @@ window.swap=function (myArray, x, y) {
     [myArray[x], myArray[y]] = [myArray[y], myArray[x]];
 }
 
-window.factorial=function (n) {
+function factorial(n) {
     if (n < 0) {
         return "number has to be positive."
     }
@@ -44,7 +44,7 @@ window.factorial=function (n) {
     }
 }
 
-window.createAndDownloadFile=function (fileContent) {
+function createAndDownloadFile(fileContent) {
     alert();
     const blob = new Blob([fileContent], {
         type: 'text/plain'

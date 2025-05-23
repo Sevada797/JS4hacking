@@ -1,4 +1,4 @@
-window.mails=function () {
+function mails() {
 // Assuming you want to extract email addresses from a document using JavaScript
 
 // Define a regular expression to match email addresses
