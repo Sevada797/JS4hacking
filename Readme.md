@@ -53,5 +53,6 @@ in html, auto-bruter script etc..)
 )
 
 ## How update the program
-Basically run ```git pull origin main && bash bundle.sh```
+Basically run 
+>```git pull origin main && bash bundle.sh```
 after reinsall the extension on chrome. (delete & again->"load unpacked")
