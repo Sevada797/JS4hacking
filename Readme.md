@@ -51,3 +51,7 @@ Cool updates upcoming !! Stay tuned :D
 2) add other cool tools (SPOILER: reflection checker for cookies and storage items
 in html, auto-bruter script etc..)
 )
+
+## How update the program
+Basically run ```git pull origin main && bash bundle.sh```
+after reinsall the extension on chrome. (delete & again->"load unpacked")
