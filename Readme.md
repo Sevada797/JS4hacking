@@ -1,6 +1,8 @@
 ![J4](https://github.com/Sevada797/JS4hacking/blob/main/assets/logo.png?raw=true)
 # 🔥 JS4Hacking Extension — Now as a Chrome Addon!
 
+![Demopic](https://github.com/Sevada797/JS4hacking/blob/main/assets/Demo.png?raw=true)
+
 I'm turning this **wonderful set of tools** into a **full Chrome Extension** — now it’s even easier to use.  
 No more messy `data:,` tricks or manual script pasting. Just toggle and hack.
 
@@ -40,8 +42,7 @@ Previously, you had to inject it manually or use TamperMonkey — now it lives i
 ---
 
 ## 🧪 Scripts List
-
-....
+Hit menu() to see most useful scripts list
 
 Cool updates upcoming !! Stay tuned :D
 
