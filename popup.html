@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #121212;
+      color: #f1f1f1;
+      width: 220px;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .switch-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /* Hide default checkbox */
+    .switch-label input {
+      display: none;
+    }
+
+    .slider {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      background: #555;
+      border-radius: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .slider::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    input:checked + .slider {
+      background: #00d08f;
+    }
+
+    input:checked + .slider::before {
+      transform: translateX(20px);
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #ffdc60;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h3>🔍 CookiesWhere</h3>
+  <label class="switch-label">
+    <input type="checkbox" id="cookie_reflections_logging">
+    <span class="slider"></span>
+    Enable cookie reflection log
+  </label>
+  <script src="popup.js"></script>
+</body>
+</html>

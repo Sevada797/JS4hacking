@@ -1,4 +1,4 @@
-async function corscheck() {
+async function corscheck(num=0) {
     const input = prompt("Enter domains (newline separated):");
     if (!input) return;
   
@@ -9,7 +9,7 @@ async function corscheck() {
       const url = `https://${domain}/`;
   
       try {
-        const res = await fetch(url, { mode: 'cors' });
+        const res = num==0 ? await fetch(url, { mode: 'cors' }) : await fetch(url, { mode: 'cors', credentials:'include' }) ;
         console.log(`✅ Fetched: ${url}`);
         successful.push(domain);
       } catch (e) {

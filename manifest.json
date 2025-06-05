@@ -2,10 +2,16 @@
   "name": "JS4Hacking",
   "version": "1.0",
   "manifest_version": 3,
-  "permissions": [],
+  "permissions": ["storage"],
   "action": {
+    "default_popup": "popup.html",
     "default_icon": "assets/logo.png",
     "default_title": "JS4Hacking"
+  },
+  "icons": {
+    "16": "assets/logo.png",
+    "48": "assets/logo.png",
+    "128": "assets/logo.png"
   },
   "content_scripts": [
     {
@@ -16,7 +22,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["main.js"],
+      "resources": ["main.js", "Modules/cookie_reflections_logger.js"],
       "matches": ["<all_urls>"]
     }
   ]
