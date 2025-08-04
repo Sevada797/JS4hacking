@@ -3,12 +3,19 @@ script.src = chrome.runtime.getURL('main.js');
 script.onload = () => script.remove();
 (document.head || document.documentElement).appendChild(script);
 
-chrome.storage.local.get(["J4_cookie_reflections_logging"], (res) => {
-    if (res.J4_cookie_reflections_logging) {
-    // Inject a script into the page context to set the global variable
-    const script2 = document.createElement('script');
-    script2.src = chrome.runtime.getURL('Modules/cookie_reflections_logger.js');
-    (document.head || document.documentElement).appendChild(script2);
-    script2.onload = () =>script2.remove(); // optional clean up
-    }
+const modules = [
+    { key: "J4_cookie_reflections_logging", path: "Modules/cookie_reflections_logger.js" },
+    { key: "J4_storage_reflections_logging", path: "Modules/storage_reflections_logger.js" },
+    { key: "J4_url_params_reflections_logging", path: "Modules/url_params_reflections_logger.js" }
+];
+
+chrome.storage.local.get(modules.map(m => m.key), (res) => {
+    modules.forEach(({ key, path }) => {
+        if (res[key]) {
+            const s = document.createElement('script');
+            s.src = chrome.runtime.getURL(path);
+            (document.head || document.documentElement).appendChild(s);
+            s.onload = () => s.remove();
+        }
+    });
 });

@@ -1,6 +1,6 @@
 {
   "name": "JS4Hacking",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 3,
   "permissions": ["storage"],
   "action": {
@@ -22,7 +22,12 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["main.js", "Modules/cookie_reflections_logger.js"],
+      "resources": [
+        "main.js",
+        "Modules/cookie_reflections_logger.js",
+        "Modules/storage_reflections_logger.js",
+        "Modules/url_params_reflections_logger.js"
+      ],
       "matches": ["<all_urls>"]
     }
   ]

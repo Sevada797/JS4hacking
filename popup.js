@@ -1,11 +1,17 @@
-const toggle = document.getElementById("cookie_reflections_logging");
+const toggles = [
+    { id: "cookie_reflections_logging", key: "J4_cookie_reflections_logging" },
+    { id: "storage_reflections_logging", key: "J4_storage_reflections_logging" },
+    { id: "url_params_reflections_logging", key: "J4_url_params_reflections_logging" }
+];
 
+toggles.forEach(({ id, key }) => {
+    const el = document.getElementById(id);
 
-chrome.storage.local.get(["J4_cookie_reflections_logging"], (res) => {
-  toggle.checked = res.J4_cookie_reflections_logging || false;
+    chrome.storage.local.get([key], (res) => {
+        el.checked = res[key] || false;
+    });
+
+    el.addEventListener("change", () => {
+        chrome.storage.local.set({ [key]: el.checked });
+    });
 });
-
-toggle.addEventListener("change", () => {
-  chrome.storage.local.set({ J4_cookie_reflections_logging: toggle.checked });
-}); // Set once in storage, then add checks in injector ;D
-
