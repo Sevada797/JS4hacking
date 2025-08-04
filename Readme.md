@@ -15,13 +15,19 @@ A collection of JavaScript tools tailored for **bug bounty hunters**, **penteste
 
 Previously, you had to inject it manually or use TamperMonkey — now it lives in your **browser toolbar**, always ready to go.
 
+So simply said, any webpage you visit, script tag is injected(then removed) to import list of functions.
+
 ---
 
 ## 🆕 What's New?
-- ✅ Chrome extension interface
-- ✅ Easy ON/OFF toggle for quick activation
-- ✅ One-click script injection
-- ✅ Cleaner, persistent setup
+
+![J4](https://github.com/Sevada797/JS4hacking/blob/main/assets/J4_Modules.png?raw=true)
+
+J4 Modules had upadte !
+#### What are J4 Modules
+I was thinkng of something that during manual pentesting can help, without calling anything,
+and I came up with this idea, current Modules-pack is called **Reflection Hunter**
+However in future I may add other features...
 
 ---
 
@@ -47,14 +53,11 @@ Hit menu() to see most useful scripts list
 Cool updates upcoming !! Stay tuned :D
 
 
-(
-1) add menu() function for listing all other functions
-2) add other cool tools (SPOILER: reflection checker for cookies and storage items
-in html, auto-bruter script etc..)
-)
 
 ## How update the program
 Basically run 
 >git pull origin main && bash bundle.sh
 
 after reinsall the extension on chrome. (delete & again->"load unpacked")
+
+
