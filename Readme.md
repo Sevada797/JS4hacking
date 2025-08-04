@@ -23,8 +23,8 @@ So simply said, any webpage you visit, script tag is injected(then removed) to i
 
 ![J4](https://github.com/Sevada797/JS4hacking/blob/main/assets/J4_Modules.png?raw=true)
 
-J4 Modules had upadte !
-#### What are J4 Modules
+**J4 Modules had upadte !!**
+### What are J4 Modules
 I was thinkng of something that during manual pentesting can help, without calling anything,
 and I came up with this idea, current Modules-pack is called **Reflection Hunter**
 However in future I may add other features...
