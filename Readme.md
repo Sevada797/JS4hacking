@@ -27,7 +27,8 @@ So simply said, any webpage you visit, script tag is injected(then removed) to i
 ### What are J4 Modules
 I was thinkng of something that during manual pentesting can help, without calling anything,
 and I came up with this idea, current Modules-pack is called **Reflection Hunter**
-However in future I may add other features...
+
+However in future I may add other features, and eventually create new Modules-pack
 
 ---
 
