@@ -9,28 +9,27 @@ function menu() {
     console.log(`
   ${bold}${cyan}=== Useful Functions Menu ===${reset}
   
-  ${yellow}1) corscheck()${reset}
+  ${yellow}X) corscheck()${reset}
      ${magenta}- Mass fetch in CORS mode across [sub]domains
      - Check for accessible targets (useful for POST XSS CSRF)
   
-  ${yellow}2) easyLoopLimiter()${reset}
+  ${yellow}X) easyLoopLimiter()${reset}
      ${magenta}- Helps prevent CPU burnouts in heavy loops
   
-  ${yellow}3) links()${reset}
+  ${yellow}X) links()${reset}
      ${magenta}- Collects links from current page
      - Logs as array
   
-  ${yellow}4) mails()${reset}
+  ${yellow}X) mails()${reset}
      ${magenta}- Extracts emails from current page
      - Logs as array
   
-  ${yellow}5) toki()${reset}
+  ${yellow}X) toki()${reset}
      ${magenta}- Decodes Base64 tokens
      - Auto URL-decodes and replaces safe chars
   
-  ${yellow}6) brute()${reset}
-     ${magenta}- Auto-detects login inputs (user/pass)
-     - Launches bruteforce attempt (for legal testing only)
+  ${yellow}X) brute()${reset}
+     ${magenta}- NOT DEVELOPED YET!
   `);
   }
   

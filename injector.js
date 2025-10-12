@@ -6,7 +6,8 @@ script.onload = () => script.remove();
 const modules = [
     { key: "J4_cookie_reflections_logging", path: "Modules/cookie_reflections_logger.js" },
     { key: "J4_storage_reflections_logging", path: "Modules/storage_reflections_logger.js" },
-    { key: "J4_url_params_reflections_logging", path: "Modules/url_params_reflections_logger.js" }
+    { key: "J4_url_params_reflections_logging", path: "Modules/url_params_reflections_logger.js" },
+    { key: "J4_golden_bug_detector", path: "Modules/golden_bug_detector.js" }
 ];
 
 chrome.storage.local.get(modules.map(m => m.key), (res) => {
