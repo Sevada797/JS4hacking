@@ -16,7 +16,9 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["injector.js"],
+      "js": [
+           "injector.js",
+           "Modules/logger.js"],
       "run_at": "document_idle"
     }
   ],
@@ -27,7 +29,8 @@
         "Modules/cookie_reflections_logger.js",
         "Modules/storage_reflections_logger.js",
         "Modules/url_params_reflections_logger.js",
-        "Modules/golden_bug_detector.js"
+        "Modules/golden_bug_detector.js",
+        "Modules/logger.js"
       ],
       "matches": ["<all_urls>"]
     }

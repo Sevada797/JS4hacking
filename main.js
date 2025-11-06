@@ -115,17 +115,47 @@ function afill(k, mail) {
 
   console.log(`✅ Autofilled with text: "${text}", email: "${email}", and password: "${pass}"`);
 }
-function axss() {
+function axss2() {
+    const inputs = document.querySelectorAll('input[type=text]');
+    const rawPayload = "axss'\"<";                // readable payload
+    const payload = encodeURIComponent(rawPayload); // safely encoded for URL
+    const params = [];
 
-let inputs=document.getElementsByTagName("input");
-let payload="axss%27%22%3c"; let injection="";
-for (i=0;i<inputs.length;i++) {
-    injection+="&"+inputs[i].name+"="+payload;
+    for (const el of inputs) {
+        if (el.id && el.id.trim() !== "") {
+            params.push(encodeURIComponent(el.id) + "=" + payload);
+        }
+    }
+
+    if (params.length > 0) {
+        const injection = "?" + params.join("&");
+        const testUrl = window.location.origin + window.location.pathname + injection;
+        console.log("Visit & inspect:", testUrl);
+    } else {
+        console.log("Nothing here — no text inputs with ids found.");
+    }
 }
-injection=injection.replace("&","?");
-console.log("Visit & inspect: "+window.location.origin+window.location.pathname+injection);
-
-}function brute() {
+function axss() {
+    let inputs = document.getElementsByTagName("input");
+    let payload = "axss%27%22%3c";
+    let params = [];
+    
+    for (let i = 0; i < inputs.length; i++) {
+        // Check if name attribute exists and is not empty
+        if (inputs[i].name && inputs[i].name.trim() !== "") {
+            params.push(inputs[i].name + "=" + payload);
+        }
+    }
+    
+    if (params.length > 0) {
+        let injection = "?" + params.join("&");
+        let testUrl = window.location.origin + window.location.pathname + injection;
+        console.log("Visit & inspect: " + testUrl);
+    } else {
+        console.log("Nothing here, look somewhere else with inputs/forms");
+    }
+}
+function brute() {
     return "";
 }async function corscheck(num=0) {
     const input = prompt("Enter domains (newline separated):");

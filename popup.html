@@ -7,7 +7,7 @@
     font-family: "Segoe UI", sans-serif;
     background: #121212;
     color: #f1f1f1;
-    width: 220px;
+    width: 250px;
     padding: 15px;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -18,6 +18,7 @@
     gap: 10px;
     cursor: pointer;
     font-size: 14px;
+    margin-bottom: 10px;
   }
   .switch-label input {
     display: none;
@@ -49,9 +50,51 @@
   }
   h3 {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: #ffdc60;
     text-align: center;
+  }
+  .logger-container {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+  }
+  .logger-input {
+    width: 100%;
+    padding: 8px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #f1f1f1;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  .arrow-button {
+    background: #00d08f;
+    color: #121212;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .arrow-button:hover {
+    background: #00b07a;
+  }
+  .arrow-button:disabled {
+    background: #555;
+    cursor: not-allowed;
+  }
+  .arrow-icon {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+  }
+  .arrow-button:not(:disabled):hover .arrow-icon {
+    transform: translateX(3px);
   }
 </style>
 </head>
@@ -63,24 +106,38 @@
     <span class="slider"></span>
     Cookie Reflections
   </label>
-<br>
+
   <label class="switch-label">
     <input type="checkbox" id="storage_reflections_logging">
     <span class="slider"></span>
     Storage Reflections
   </label>
-  <br>
+
   <label class="switch-label">
     <input type="checkbox" id="url_params_reflections_logging">
     <span class="slider"></span>
     URL Params Reflections
   </label>
-  <br>
+
   <label class="switch-label">
     <input type="checkbox" id="golden_bug_detector">
     <span class="slider"></span>
     Golden Bug Detector
   </label>
+
+  <label class="switch-label">
+    <input type="checkbox" id="logger">
+    <span class="slider"></span>
+    Logger
+  </label>
+
+  <div class="logger-container">
+    <input type="text" class="logger-input" id="logger_endpoint" placeholder="E.g. http://127.0.0.1:8080">
+    <button class="arrow-button" id="save_logger">
+      Save Logger URL
+      <span class="arrow-icon">→</span>
+    </button>
+  </div>
 
   <script src="popup.js"></script>
 </body>
