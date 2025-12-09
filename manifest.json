@@ -26,11 +26,7 @@
     {
       "resources": [
         "main.js",
-        "Modules/cookie_reflections_logger.js",
-        "Modules/storage_reflections_logger.js",
-        "Modules/url_params_reflections_logger.js",
-        "Modules/golden_bug_detector.js",
-        "Modules/logger.js"
+        "Modules/*"
       ],
       "matches": ["<all_urls>"]
     }

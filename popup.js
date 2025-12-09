@@ -3,6 +3,7 @@ const toggles = [
     { id: "storage_reflections_logging", key: "J4_storage_reflections_logging" },
     { id: "url_params_reflections_logging", key: "J4_url_params_reflections_logging" },
     { id: "golden_bug_detector", key: "J4_golden_bug_detector" },
+    { id: "csrf_detector", key: "J4_csrf_detector" },
     { id: "logger", key: "J4_logger" }
 ];
 
