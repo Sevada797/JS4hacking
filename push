@@ -1,3 +1,3 @@
 git add .
-git commit -m "Adding CSRF Detector"
+git commit -m "Adding POST message logger, + added deduping for XHR/Fetch logging in csrf_detector.js"
 git push origin main

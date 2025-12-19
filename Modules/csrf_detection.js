@@ -114,13 +114,13 @@ function inspectRequest(type, url, headers, body) {
     }
 }
 
-
+const fetch_xhr_urls = [];
 function detectFetch() {
     const origFetch = window.fetch;
     window.fetch = async (...args) => {
         const [url, options = {}] = args;
         const method = (options.method || "GET").toUpperCase();
-
+        if (fetch_xhr_urls.indexOf(url)===-1) {
         if (method !== "GET") {
             inspectRequest(
                 "Fetch",
@@ -128,6 +128,9 @@ function detectFetch() {
                 JSON.stringify(options.headers || {}),
                 typeof options.body === "string" ? options.body : ""
             );
+            fetch_xhr_urls.push(url);
+        }
+            
         }
 
         try {
@@ -161,13 +164,16 @@ function detectXHR() {
         xhr._body = body || "";
         
         xhr.addEventListener("readystatechange", function() {
-            if (xhr.readyState === 4 && xhr._method !== "GET") {
+            if (fetch_xhr_urls.indexOf(xhr._url)===-1) {
+                if (xhr.readyState === 4 && xhr._method !== "GET") {
                 inspectRequest(
                     "XHR",
                     xhr._url,
                     xhr._reqHeaders,
                     typeof xhr._body === "string" ? xhr._body : ""
                 );
+                fetch_xhr_urls.push(xhr._url);
+            }
             }
         });
 

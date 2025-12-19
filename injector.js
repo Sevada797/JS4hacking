@@ -8,7 +8,8 @@ const modules = [
     { key: "J4_storage_reflections_logging", path: "Modules/storage_reflections_logger.js" },
     { key: "J4_url_params_reflections_logging", path: "Modules/url_params_reflections_logger.js" },
     { key: "J4_golden_bug_detector", path: "Modules/golden_bug_detector.js" },
-    { key: "J4_csrf_detector", path: "Modules/csrf_detection.js" }
+    { key: "J4_csrf_detector", path: "Modules/csrf_detection.js" },
+    { key: "J4_postmessage_logger", path: "Modules/postmessage_logger.js" }
 //    { key: "J4_logger", path: "Modules/logger.js" }  # we will load this as content script
 ];
 

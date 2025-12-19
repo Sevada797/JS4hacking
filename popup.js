@@ -4,7 +4,8 @@ const toggles = [
     { id: "url_params_reflections_logging", key: "J4_url_params_reflections_logging" },
     { id: "golden_bug_detector", key: "J4_golden_bug_detector" },
     { id: "csrf_detector", key: "J4_csrf_detector" },
-    { id: "logger", key: "J4_logger" }
+    { id: "logger", key: "J4_logger" },
+    { id: "postmessage_logger", key: "J4_postmessage_logger" }
 ];
 
 toggles.forEach(({ id, key }) => {
