@@ -1,3 +1,3 @@
 git add .
-git commit -m "In Golden Bug Detector -> added CSRF detector, with 90% confidence (alerts in case of finds)"
+git commit -m "Less noizy check (ignore forms with no action attribute, these are submited by JS mostly) in golden_bug_detector->CSRF detector"
 git push origin main

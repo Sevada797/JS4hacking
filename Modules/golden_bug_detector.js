@@ -132,7 +132,7 @@ STAY TUNED !!
             return;
         }
 
-        const postForms = document.querySelectorAll('form[method="post"], form[method="POST"]');
+        const postForms = document.querySelectorAll('form[method="post"][action]');
         
         postForms.forEach((form, index) => {
             checkForm(form, index);
